@@ -1,0 +1,2 @@
+0.1 - Initial version
+    - added support for reading key from property file (only one key at a time)
