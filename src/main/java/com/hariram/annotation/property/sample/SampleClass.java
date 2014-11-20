@@ -1,5 +1,7 @@
 package com.hariram.annotation.property.sample;
 
+import org.apache.log4j.Logger;
+
 import com.hariram.annotation.AnnotationProcessor;
 import com.hariram.annotation.property.Property;
 import com.hariram.annotation.property.PropertyAnnotationProcessor;
@@ -11,6 +13,9 @@ import com.hariram.annotation.property.PropertyAnnotationProcessor;
  * date 18-Nov-2014
  */
 public class SampleClass {
+	
+	public static final Logger LOGGER = Logger.getLogger(SampleClass.class);
+	
 	@Property(
 			path="/home/hariram/Personal/github/PropertyAnnotation/src/main/resources/",
 			name="log4j", 
@@ -27,17 +32,10 @@ public class SampleClass {
 	 * Default constructor
 	 */
 	public SampleClass() {
+		LOGGER.info("SampleClass.constructor - start calling PropertyAnnotationProcessor");
 		AnnotationProcessor processor = new PropertyAnnotationProcessor();
 		processor.process(this, null, null);
+		LOGGER.info("SampleClass.constructor - done calling PropertyAnnotationProcessor");
 	}
 	
-	/**
-	 * main function
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		SampleClass sampleClass = new SampleClass();
-		System.out.println(sampleClass.log4jroot);
-		System.out.println(sampleClass.log4jStdOut);
-	}
 }

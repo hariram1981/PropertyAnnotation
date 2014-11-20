@@ -5,6 +5,8 @@ package com.hariram.annotation.property;
 
 import java.lang.reflect.Field;
 
+import org.apache.log4j.Logger;
+
 import com.hariram.annotation.AnnotationProcessor;
 import com.hariram.common.util.Util;
 
@@ -13,6 +15,8 @@ import com.hariram.common.util.Util;
  * date 19-Nov-2014
  */
 public class PropertyAnnotationProcessor implements AnnotationProcessor {
+	
+	public static final Logger LOGGER = Logger.getLogger(PropertyAnnotationProcessor.class);
 	
 	/**
 	 * Default constructor
@@ -29,7 +33,8 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 	 * @return Object that is returned by the db method
 	 */
 	public Object process(Object obj, String callbackMethodName, Object[] callbackMethodArgs) {
-		Class objClass = obj.getClass();
+		LOGGER.info("PropertyAnnotationProcessor.process, callbackMethodName: " + callbackMethodName + ", callbackMethodArgs: " + callbackMethodArgs);
+		Class<? extends Object> objClass = obj.getClass();
 		for(Field field: objClass.getFields()) {
 			if(field.isAnnotationPresent(Property.class)) {
 				Property property = field.getAnnotation(Property.class);
@@ -41,10 +46,11 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 					String value = Util.getProperty(filePath, fileName, keys[0]);
 					field.set(obj, value);
 				} catch (IllegalArgumentException | IllegalAccessException e) {
-					e.printStackTrace();
+					LOGGER.error("Util.process IllegalArgument or IllegalAccessException, message : " + e.getClass() + " " + e.getMessage());
 				}
 			}
 		}
+		LOGGER.info("PropertyAnnotationProcessor.process, processing done");
 		
 		return null;
 	}
