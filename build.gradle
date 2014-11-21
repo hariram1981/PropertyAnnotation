@@ -16,14 +16,14 @@ uploadArchives {
 		repository (url: "file:///home/hariram/Personal/github/maven-repo-snapshot")
 		pom.artifactId = 'propertyannotation'
 		pom.groupId = 'com.hariram'
-		pom.version = '0.1'
+		pom.version = '0.2'
 	}
 }
 
 sourceCompatibility = '1.8'
 jar {
     baseName = 'propertyannotation'
-    version =  '0.1'
+    version =  '0.2'
 }
 
 repositories {
@@ -40,8 +40,8 @@ repositories {
 dependencies {
     compile("log4j:log4j:1.2.17")
     compile("junit:junit:4.4")
-    compile("com.hariram:annotation:0.1")
-    compile("com.hariram:commonutil:0.2")
+    compile("com.hariram:annotation:0.3")
+    compile("com.hariram:commonutil:0.4")
 }
 
 task wrapper(type: Wrapper) {
