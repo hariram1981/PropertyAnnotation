@@ -1,11 +1,11 @@
 package com.hariram.annotation.property;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.hariram.annotation.property.sample.SampleClass;
+import com.hariram.annotation.property.sample.SampleStaticClass;
 
 /**
  * Junit test case
@@ -14,7 +14,7 @@ import com.hariram.annotation.property.sample.SampleClass;
  */
 public class PropertyAnnotationTest {
 
-	@Test
+	//@Test
 	public void test() {
 		SampleClass sampleClass = new SampleClass();
 		System.out.println(sampleClass.log4jroot);
@@ -25,6 +25,19 @@ public class PropertyAnnotationTest {
 				&& !sampleClass.log4jroot.equals("")
 				&& sampleClass.log4jStdOut != null
 				&& !sampleClass.log4jStdOut.equals(""));
+	}
+	
+	@Test
+	public void testStatic() {
+		SampleStaticClass.test();
+		System.out.println(SampleStaticClass.log4jroot);
+		System.out.println(SampleStaticClass.log4jStdOut);
+		assertTrue(SampleStaticClass.log4jroot != null
+				&& !SampleStaticClass.log4jroot.equals("")
+				&& SampleStaticClass.log4jroot != null
+				&& !SampleStaticClass.log4jroot.equals("")
+				&& SampleStaticClass.log4jStdOut != null
+				&& !SampleStaticClass.log4jStdOut.equals(""));
 	}
 
 }

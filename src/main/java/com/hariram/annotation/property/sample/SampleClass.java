@@ -34,7 +34,7 @@ public class SampleClass {
 	public SampleClass() {
 		LOGGER.info("SampleClass.constructor - start calling PropertyAnnotationProcessor");
 		AnnotationProcessor processor = new PropertyAnnotationProcessor();
-		processor.process(this, null, null);
+		processor.process(this);
 		LOGGER.info("SampleClass.constructor - done calling PropertyAnnotationProcessor");
 	}
 	

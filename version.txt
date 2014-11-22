@@ -1,3 +1,5 @@
 0.1 - Initial version
     - added support for reading key from property file (only one key at a time)
 0.2 - Updated annotation to 0.3
+0.3 - Added junittest for static class
+    - added overloaded method without callback

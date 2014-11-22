@@ -25,15 +25,27 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 	}
 
     /**
-	 * Process - call the db method with arguments provided, of the object passed that has the @DB
+	 * Process - call the callback method with arguments provided, of the object passed that has the @Property
+	 * - not used method
 	 * 
-	 * @param obj object which has @DB and the db method to be called using reflection
-	 * @param callbackMethodName the db method to be called
-	 * @param callbackMethodArgs arguments for the db method to be called
-	 * @return Object that is returned by the db method
+	 * @param obj object which has @Property and the method to be called using reflection
+	 * @param callbackMethodName the method to be called
+	 * @param callbackMethodArgs arguments for the method to be called
+	 * @return Object that is returned by the method
+	 * @deprecated - not used method in property annotation
 	 */
 	public Object process(Object obj, String callbackMethodName, Object[] callbackMethodArgs) {
-		LOGGER.info("PropertyAnnotationProcessor.process, callbackMethodName: " + callbackMethodName + ", callbackMethodArgs: " + callbackMethodArgs);
+		return null;
+	}
+
+    /**
+	 * Process - call the callback method with arguments provided, of the object passed that has the @Property
+	 * 
+	 * @param obj object which has @Property and the method to be called using reflection
+	 * @return Object that is returned by the db method
+	 */
+	public Object process(Object obj) {
+		LOGGER.info("PropertyAnnotationProcessor.process, obj : " + obj);
 		Class<? extends Object> objClass = obj.getClass();
 		for(Field field: objClass.getFields()) {
 			if(field.isAnnotationPresent(Property.class)) {
@@ -51,7 +63,6 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 			}
 		}
 		LOGGER.info("PropertyAnnotationProcessor.process, processing done");
-		
 		return null;
 	}
 
