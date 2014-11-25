@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 
 import org.apache.log4j.Logger;
 
+import com.hariram.annotation.AnnotationException;
 import com.hariram.annotation.AnnotationProcessor;
 import com.hariram.common.util.Util;
 
@@ -34,7 +35,7 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 	 * @return Object that is returned by the method
 	 * @deprecated - not used method in property annotation
 	 */
-	public Object process(Object obj, String callbackMethodName, Object[] callbackMethodArgs) {
+	public Object process(Object obj, String callbackMethodName, Object[] callbackMethodArgs) throws AnnotationException {
 		return null;
 	}
 
@@ -59,6 +60,7 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 					field.set(obj, value);
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					LOGGER.error("Util.process IllegalArgument or IllegalAccessException, message : " + e.getClass() + " " + e.getMessage());
+					throw new AnnotationException("PropertyAnnotationProcessor.process, message : " + e.getClass() + " " + e.getMessage(), AnnotationType.PropertyAnnotation);
 				}
 			}
 		}

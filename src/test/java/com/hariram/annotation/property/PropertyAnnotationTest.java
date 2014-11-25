@@ -14,7 +14,7 @@ import com.hariram.annotation.property.sample.SampleStaticClass;
  */
 public class PropertyAnnotationTest {
 
-	//@Test
+	@Test
 	public void test() {
 		SampleClass sampleClass = new SampleClass();
 		System.out.println(sampleClass.log4jroot);
