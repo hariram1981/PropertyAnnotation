@@ -33,11 +33,14 @@ Usage
 			keys={"log4j.appender.stdout"})
 		public String log4jroot;
 		
-		static {
-			
-		}
-
 - In above first two line sets the value of the key log4j.appender.stdout from /opt/log4j.properties to log4jroot variable.
+
+- The below code has to be set either in static block for static variables or in constructor for class variables:
+
+		AnnotationProcessor processor = new PropertyAnnotationProcessor();
+		processor.process(<class instance[this,new <classname>()>);
+		//processor.process(this) - for class variables and called in MyClass()
+		//processor.process(new MyClass() - for static variables of MyClass
 
 
 License
