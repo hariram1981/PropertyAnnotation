@@ -43,9 +43,8 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 	 * Process - call the callback method with arguments provided, of the object passed that has the @Property
 	 * 
 	 * @param obj object which has @Property and the method to be called using reflection
-	 * @return Object that is returned by the db method
 	 */
-	public Object process(Object obj) {
+	public void process(Object obj) {
 		LOGGER.info("PropertyAnnotationProcessor.process, obj : " + obj);
 		Class<? extends Object> objClass = obj.getClass();
 		for(Field field: objClass.getFields()) {
@@ -65,7 +64,6 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 			}
 		}
 		LOGGER.info("PropertyAnnotationProcessor.process, processing done");
-		return null;
 	}
 
 }
