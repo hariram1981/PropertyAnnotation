@@ -4,3 +4,4 @@
 0.3 - Added junittest for static class
     - added overloaded method without callback
 0.4 - Updated annotation to 0.5 and exception handling added
+0.5 - Updated annotation to 0.9
