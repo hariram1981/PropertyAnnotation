@@ -17,11 +17,8 @@ Classes
  - Class that processes the @Property annotation.
  - Implements com.hariram.annotation.AnnotationProcessor. 
  
-####Object process(Object obj)
+####void process(Object obj)
  - Processes the annotation and sets the class level variables which have been annotated by @Property.
- 
-###2. com.hariram.annotation.AnnotationException
- - Exception that extends RuntimeException and handles exceptions related to annotations
  
 Usage
 ----------
@@ -37,11 +34,8 @@ Usage
 
 - The below code has to be set either in static block for static variables or in constructor for class variables:
 
-		AnnotationProcessor processor = new PropertyAnnotationProcessor();
-		processor.process(<class instance[this,new <classname>()>);
-		//processor.process(this) - for class variables and called in MyClass()
-		//processor.process(new MyClass() - for static variables of MyClass
-
+		AnnotationProcessor processor = new CacheAnnotationProcessor();
+		processor.process(new CacheSample());
 
 License
 ==========
