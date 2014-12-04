@@ -54,9 +54,13 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 				String filePath = property.path();
 				String[] keys = property.keys();
 				try {
-					//Fetch from property file
-					String value = Util.getProperty(filePath, fileName, keys[0]);
-					field.set(obj, value);
+					if(keys != null && keys.length > 0) {
+						if(!keys[0].equals("")) {
+							//Fetch from property file
+							String value = Util.getProperty(filePath, fileName, keys[0]);
+							field.set(obj, value);
+						}
+					}
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					LOGGER.error("Util.process IllegalArgument or IllegalAccessException, message : " + e.getClass() + " " + e.getMessage());
 					throw new AnnotationException("PropertyAnnotationProcessor.process, message : " + e.getClass() + " " + e.getMessage(), AnnotationType.PropertyAnnotation);
