@@ -47,7 +47,8 @@ public class PropertyAnnotationProcessor implements AnnotationProcessor {
 	public void process(Object obj) {
 		LOGGER.info("PropertyAnnotationProcessor.process, obj : " + obj);
 		Class<? extends Object> objClass = obj.getClass();
-		for(Field field: objClass.getFields()) {
+		for(Field field: objClass.getDeclaredFields()) {
+			field.setAccessible(true);
 			if(field.isAnnotationPresent(Property.class)) {
 				Property property = field.getAnnotation(Property.class);
 				String fileName = property.name();
