@@ -16,14 +16,14 @@ uploadArchives {
 		repository (url: "file:///home/hariram/Personal/github/maven-repo-snapshot")
 		pom.artifactId = 'propertyannotation'
 		pom.groupId = 'com.hariram'
-		pom.version = '0.7'
+		pom.version = '1.0'
 	}
 }
 
 sourceCompatibility = '1.8'
 jar {
     baseName = 'propertyannotation'
-    version =  '0.7'
+    version =  '1.0'
 }
 
 repositories {
